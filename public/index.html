@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="tab" border="2px">
+        <tr>
+            <th>Name</th>
+            <th>date of birth</th>
+            <th>Image</th>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Email</th>
+        </tr>
+    </table>
+</body>
+ <script>
+     filler=document.getElementById("tab");
+     fetch('https://dummyjson.com/users').then(x=>x.json()).then(y=>{ for(i=0;i<y.users.length;i++){
+        row= document.createElement('tr');
+         t1=document.createElement('td');
+         t2=document.createElement('td');
+         t3=document.createElement('td');
+         t4=document.createElement('td');
+         t5=document.createElement('td');
+         t6=document.createElement('td');
+         t1.innerHTML=y.users[i].lastName;
+         t2.innerHTML=y.users[i].birthDate;
+         t3.innerHTML="<img src="+y.users[i].image+" width='100'>";               
+         t4.innerHTML=y.users[i].company.name;
+         t5.innerHTML=y.users[i].company.title;
+         t6.innerHTML=y.users[i].email;
+         row.appendChild(t1);
+         row.appendChild(t2);
+         row.appendChild(t3);
+         row.appendChild(t4);
+         row.appendChild(t5);
+         row.appendChild(t6);
+         filler.appendChild(row);
+     }});
+ </script>
+</html>
